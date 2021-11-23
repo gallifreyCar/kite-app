@@ -19,3 +19,7 @@ yarn android
 yarn ios
 yarn web
 ```
+
+## 注意事项
+
+目前依赖于expo进行开发环境的构建，如果需要构建Native应用，请转而使用`react-native-cli`。
