@@ -4,26 +4,29 @@
 
 ## 环境
 
-- node v14.x
-- yarn
+- node v14.x+
+- yarn v2
+- 其余包依赖由 [Yarn](https://yarnpkg.com/) 管理；
+- Neact Native 环境由 [Expo](https://expo.dev/) 代理。
 
 ## 运行
 
-```zsh
-# 安装依赖
-yarn install
-
-# 启动 (任选一种)
-yarn start # you can open iOS, Android, or web from here, or run them directly with the commands below.
-yarn android
-yarn ios
-yarn web
-```
+0. [下载安装 node](https://nodejs.org/zh-cn/download/)
+1. [安装 yarn](https://yarnpkg.com/getting-started/install)；
+2. `cd` 到本项目目录下；
+3. 安装依赖：`yarn install`
+4. 启动：（任选一种，其中 `yarn start` 为从下列命令中选择一种运行）
+   ``` shell
+   yarn start
+   yarn android
+   yarn ios
+   yarn web
+   ```
 
 ## 注意事项
 
-删除原来 master 分支的代码, 并拉取最新代码.
+先删除原来 master 分支的代码，再拉取最新代码。
 
-由于配置了 Prettier，请务必在 IDE 安装相关插件确保代码格式正确。
+由于配置了 Prettier，请务必在IDE安装相关插件确保代码格式正确。
 
 目前依赖于 expo 进行开发环境的构建，如果需要构建 Native 应用，请转而使用`react-native-cli`。
