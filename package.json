@@ -8,7 +8,8 @@
     "ios": "expo start --ios",
     "web": "expo start --web",
     "eject": "expo eject",
-    "test": "jest --watchAll"
+    "test": "jest --watchAll",
+    "lint": "yarn prettier --write ."
   },
   "jest": {
     "preset": "jest-expo"

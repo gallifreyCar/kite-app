@@ -22,8 +22,8 @@ yarn web
 
 ## 注意事项
 
-删除原来master分支的代码, 并拉取最新代码.
+删除原来 master 分支的代码, 并拉取最新代码.
 
-由于配置了Prettier，请务必在IDE安装相关插件确保代码格式正确。
+由于配置了 Prettier，请务必在 IDE 安装相关插件确保代码格式正确。
 
 目前依赖于 expo 进行开发环境的构建，如果需要构建 Native 应用，请转而使用`react-native-cli`。
