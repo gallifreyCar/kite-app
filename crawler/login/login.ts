@@ -14,12 +14,12 @@ export const login = async (username: string, password: string): Promise<LoginCr
     try {
         const res = await axios.get(LOGIN_URL)
         const originCookie = res.headers['set-cookie']![0]
-        const cookie = filterCookie(originCookie)
+        const indexCookie = filterCookie(originCookie)
         const loginHtml = res.data
         let captcha: string = ''
-        const needCaptcha = await needCaptchaCheck(cookie, username)
+        const needCaptcha = await needCaptchaCheck(indexCookie, username)
         if (needCaptcha) {
-            const captchaImage = await getCaptchaImageBase64(CAPTCHA_URL, cookie)
+            const captchaImage = await getCaptchaImageBase64(CAPTCHA_URL, indexCookie)
             captcha = await recognizeCaptcha(captchaImage)
         }
         const pwdSalt = getPwdSalt(loginHtml)
@@ -34,7 +34,10 @@ export const login = async (username: string, password: string): Promise<LoginCr
         return {
             username,
             password,
-            cookie: authCookie,
+            cookie: {
+                ...parseCookie(indexCookie),
+                ...authCookie,
+            },
         }
     } catch (e: any) {
         throw new Error('尝试获取登录Cookie失败: ' + e.message)
