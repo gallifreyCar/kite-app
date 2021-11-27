@@ -1,9 +1,14 @@
 import axios from 'axios'
 import * as Buffer from 'buffer'
 import * as qs from 'qs'
-import fetch from 'node-fetch'
+import Tesseract from 'tesseract.js'
 import { encryptAES, filterCookie, parseCookie } from './utils'
 import { CAPTCHA_URL, DDDDOCR_URL, HEADERS, LOGIN_URL, NEED_CAPTCHA_URL } from './constant'
+import { LoginCredential, TesseractWorker } from './type'
+
+const { createWorker } = Tesseract
+
+let worker: TesseractWorker
 
 /**
  * 尝试登录获取Cookie
@@ -20,7 +25,8 @@ export const login = async (username: string, password: string): Promise<LoginCr
         const needCaptcha = await needCaptchaCheck(indexCookie, username)
         if (needCaptcha) {
             const captchaImage = await getCaptchaImageBase64(CAPTCHA_URL, indexCookie)
-            captcha = await recognizeCaptcha(captchaImage)
+            // captcha = await recognizeCaptcha(captchaImage)
+            captcha = await recognizeCaptchaWithTesseract(captchaImage)
         }
         const pwdSalt = getPwdSalt(loginHtml)
         const authCookie = await loginWithAuth(
@@ -122,30 +128,26 @@ const loginWithAuth = async (
         _eventId: 'submit',
         rmShown: '1',
     }
-    let res
     try {
-        res = await fetch('https://authserver.sit.edu.cn/authserver/login', {
+        await axios.post(LOGIN_URL, qs.stringify(params), {
             headers: {
                 ...HEADERS,
                 'content-type': 'application/x-www-form-urlencoded',
                 cookie,
             },
-            body: qs.stringify(params),
-            method: 'POST',
-            redirect: 'manual',
+            maxRedirects: 0,
         })
     } catch (e: any) {
-        throw new Error('尝试登录失败: ' + e.message)
-    }
-
-    if (res.status === 301 || res.status === 302) {
-        const httpCookie = res.headers.get('set-cookie')
-        if (httpCookie) {
-            const cookie = parseCookie(filterCookie(httpCookie))
-            return cookie
+        const status = e.response.status
+        if (status === 301 || status === 302) {
+            const httpCookie = e.response.headers['set-cookie']![0]
+            if (httpCookie) {
+                return parseCookie(filterCookie(httpCookie))
+            }
+            throw new Error('登录状态码302，但未获取到Cookie')
         }
+        throw new Error('登录状态码非302遇到错误: ' + e.message)
     }
-    throw new Error('登录失败，未获取到Cookie')
 }
 
 /**
@@ -186,5 +188,53 @@ const needCaptchaCheck = async (cookie: string, account: string): Promise<boolea
         return needCaptcha
     } catch (e: any) {
         throw new Error('检查是否需要验证码失败: ' + e.message)
+    }
+}
+
+/**
+ * Tesseract识别验证码
+ * @param imgBase64
+ */
+const recognizeCaptchaWithTesseract = async (imgBase64: string): Promise<string> => {
+    const prefix = 'data:image/png;base64,'
+    try {
+        if (!worker) throw new Error('tesseract worker 未初始化')
+        const {
+            data: { text },
+        } = await worker!.recognize(prefix + imgBase64)
+        return text.replace(/[\n|\s+]/g, '')
+    } catch (e: any) {
+        throw new Error('识别验证码失败: ' + e.message)
+    }
+}
+
+/**
+ * Worker初始化
+ */
+export const initWorker = async (): Promise<any> => {
+    if (worker) {
+        return
+    }
+    try {
+        worker = createWorker({
+            langPath: '.',
+            gzip: false,
+        })
+        await worker.load()
+        await worker.loadLanguage('eng')
+        await worker.initialize('eng')
+    } catch (e) {
+        throw new Error('初始化Worker失败')
+    }
+}
+
+/**
+ * Worker清理
+ * @param cookie
+ */
+export const terminateWorker = async () => {
+    if (worker) {
+        await worker.terminate()
+        worker = undefined
     }
 }

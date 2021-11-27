@@ -41,7 +41,6 @@
         "@types/crypto-js": "^4.0.2",
         "@types/jest": "^27.0.3",
         "@types/node": "^16.11.10",
-        "@types/node-fetch": "^2.5.12",
         "@types/qs": "^6.9.7",
         "@types/react": "~17.0.21",
         "@types/react-native": "~0.64.12",

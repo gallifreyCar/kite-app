@@ -1,3 +1,5 @@
+import { Worker } from 'tesseract.js'
+
 interface LoginCredential {
     username: string
     password: string
@@ -5,3 +7,5 @@ interface LoginCredential {
 }
 
 type Cookie = { [key: string]: any }
+
+type TesseractWorker = Worker | undefined
