@@ -130,8 +130,6 @@ const loginWithAuth = async (
                 'content-type': 'application/x-www-form-urlencoded',
                 cookie,
             },
-            referrer: 'https://authserver.sit.edu.cn/authserver/login',
-            referrerPolicy: 'no-referrer-when-downgrade',
             body: qs.stringify(params),
             method: 'POST',
             redirect: 'manual',
