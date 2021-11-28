@@ -39,3 +39,6 @@ web-build/
 # idea
 .idea
 *.iml
+
+# jest
+coverage/
