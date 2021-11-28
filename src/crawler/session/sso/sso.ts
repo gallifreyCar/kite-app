@@ -2,8 +2,16 @@ import axios from 'axios'
 import * as Buffer from 'buffer'
 import * as qs from 'qs'
 import { createWorker } from 'Tesseract.js'
-import { encryptAES, filterCookie, parseCookie } from './utils'
-import { CAPTCHA_URL, DDDDOCR_URL, HEADERS, LOGIN_URL, NEED_CAPTCHA_URL } from '@/constants'
+import { encryptAES, filterCookie, parseCookie } from '../utils'
+import {
+    CAPTCHA_URL,
+    DDDDOCR_URL,
+    HEADERS,
+    SSO_LOGIN_URL,
+    NEED_CAPTCHA_URL,
+    TESS_ENG_DATA_PATH,
+    MAX_CAPTCHA_COUNT,
+} from '@/constants'
 import { Worker } from 'tesseract.js'
 
 type TesseractWorker = Worker | undefined
@@ -11,14 +19,34 @@ type TesseractWorker = Worker | undefined
 let worker: TesseractWorker
 
 /**
+ * 带有最大重试次数的登录SSO
+ * @warning 使用tesseract进行验证码识别，必须调用initWorker()方法初始化
+ * @param username
+ * @param password
+ */
+export const getSSOCookie = async (username: string, password: string): Promise<Cookie> => {
+    let retryCount = 0
+    while (retryCount < MAX_CAPTCHA_COUNT) {
+        try {
+            const cookie = await ssoLogin(username, password)
+            return cookie
+        } catch (e: any) {
+            console.warn(`第${retryCount + 1}次尝试: ${e.message}，重试中...`)
+            retryCount++
+        }
+    }
+    throw new Error('登录SSO获取Cookie超出最大十次限制')
+}
+
+/**
  * 尝试登录获取Cookie
  * @warning 使用tesseract进行验证码识别，必须调用initWorker()方法初始化
  * @param username
  * @param password
  */
-export const login = async (username: string, password: string): Promise<LoginCredential> => {
+export const ssoLogin = async (username: string, password: string): Promise<Cookie> => {
     try {
-        const res = await axios.get(LOGIN_URL)
+        const res = await axios.get(SSO_LOGIN_URL)
         const originCookie = res.headers['set-cookie']![0]
         const indexCookie = filterCookie(originCookie)
         const loginHtml = res.data
@@ -28,6 +56,7 @@ export const login = async (username: string, password: string): Promise<LoginCr
             const captchaImage = await getCaptchaImageBase64(CAPTCHA_URL, indexCookie)
             // captcha = await recognizeCaptcha(captchaImage)
             captcha = await recognizeCaptchaWithTesseract(captchaImage)
+            if (!isCaptchaFormatCorrect(captcha)) throw new Error('识别验证码格式不正确')
         }
         const pwdSalt = getPwdSalt(loginHtml)
         const authCookie = await loginWithAuth(
@@ -39,15 +68,11 @@ export const login = async (username: string, password: string): Promise<LoginCr
             originCookie
         )
         return {
-            username,
-            password,
-            cookie: {
-                ...parseCookie(indexCookie),
-                ...authCookie,
-            },
+            ...parseCookie(indexCookie),
+            ...authCookie,
         }
     } catch (e: any) {
-        throw new Error('尝试获取登录Cookie失败: ' + e.message)
+        throw new Error('尝试获取SSO登录Cookie失败: ' + e.message)
     }
 }
 
@@ -129,8 +154,9 @@ const loginWithAuth = async (
         _eventId: 'submit',
         rmShown: '1',
     }
+    let res
     try {
-        await axios.post(LOGIN_URL, qs.stringify(params), {
+        res = await axios.post(SSO_LOGIN_URL, qs.stringify(params), {
             headers: {
                 ...HEADERS,
                 'content-type': 'application/x-www-form-urlencoded',
@@ -145,10 +171,20 @@ const loginWithAuth = async (
             if (httpCookie) {
                 return parseCookie(filterCookie(httpCookie))
             }
-            throw new Error('登录状态码302，但未获取到Cookie')
+            throw new Error('登录SSO状态码302，但未获取到Cookie')
         }
-        throw new Error('登录状态码非302遇到错误: ' + e.message)
+        throw new Error('登录SSO状态码非302遇到错误: ' + e.message)
     }
+    if (res.status === 200) {
+        const html = res.data
+        if (html.includes('无效的验证码')) {
+            throw new Error('登录SSO状态码200，验证码错误')
+        } else if (html.includes('您提供的用户名或者密码有误')) {
+            throw new Error('登录SSO状态码200，用户名或密码错误')
+        }
+        throw new Error('登录SSO状态码200，未知错误')
+    }
+    throw new Error('登录SSO失败, 未知错误')
 }
 
 /**
@@ -158,15 +194,6 @@ const loginWithAuth = async (
 const getLT = (html: string): string => {
     const lt = html.match(/<input type="hidden" name="lt" value="(.*?)"/)![1]
     return lt
-}
-
-/**
- * 明文密码加salt后再加密
- * @param password
- * @param salt
- */
-export const encryptPassword = (password: string, salt: string) => {
-    return encryptAES(password, salt)
 }
 
 /**
@@ -209,6 +236,11 @@ const recognizeCaptchaWithTesseract = async (imgBase64: string): Promise<string>
     }
 }
 
+const isCaptchaFormatCorrect = (captcha: string): boolean => {
+    const captchaRegex = /^[0-9a-zA-Z]{4}$/
+    return captcha.length === 4 && captchaRegex.test(captcha)
+}
+
 /**
  * Worker初始化
  */
@@ -218,14 +250,14 @@ export const initWorker = async (): Promise<any> => {
     }
     try {
         worker = createWorker({
-            langPath: '.',
+            langPath: TESS_ENG_DATA_PATH,
             gzip: false,
         })
         await worker.load()
         await worker.loadLanguage('eng')
         await worker.initialize('eng')
-    } catch (e) {
-        throw new Error('初始化Worker失败')
+    } catch (e: any) {
+        throw new Error('初始化Worker失败: ' + e)
     }
 }
 
