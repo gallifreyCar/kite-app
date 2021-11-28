@@ -42,3 +42,6 @@ web-build/
 
 # jest
 coverage/
+
+# tesseract
+*.traineddata
