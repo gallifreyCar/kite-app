@@ -7,11 +7,12 @@ describe('Edu Login Test', () => {
     })
     it('should sso', async () => {
         const username = 'username'
-        const password = '123456'
+        const password = 'password'
         const ssoCookie = await getSSOCookie(username, password)
-        const eduCookie = await eduLogin(ssoCookie)
 
         expect(ssoCookie).not.toBeUndefined()
-        expect(eduCookie).not.toBeUndefined()
+        await expect(eduLogin(ssoCookie)).rejects.toThrowError(
+            '登录教务系统超时，请检查是否连接校园网'
+        )
     })
 })

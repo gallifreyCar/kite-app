@@ -8,9 +8,13 @@ export const eduLogin = async (ssoCookie: Cookie): Promise<Cookie> => {
             headers: {
                 cookie: stringifyCookie(ssoCookie),
             },
-            maxRedirects: 0,
+            maxRedirects: 1,
+            timeout: 1000,
         })
     } catch (e: any) {
+        if (e.message.includes('timeout')) {
+            throw new Error('登录教务系统超时，请检查是否连接校园网')
+        }
         const status = e.response.status
         if (status == 302 || status == 301) {
             const httpCookie = e.response.headers['set-cookie']![0]
