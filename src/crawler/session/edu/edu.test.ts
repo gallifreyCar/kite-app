@@ -1,18 +1,18 @@
-import { initTesseractWorker, getSSOCookie, eduLogin } from '@/crawler/session'
+import { eduLogin, ssoLogin, initTesseractWorker } from '@/crawler/session'
 
 describe('Edu Login Test', () => {
     jest.setTimeout(10000)
     beforeAll(async () => {
         await initTesseractWorker()
     })
-    it('should sso', async () => {
+    it('should get edu cookie', async () => {
         const username = 'username'
         const password = 'password'
-        const ssoCookie = await getSSOCookie(username, password)
+        const ssoCookie = await ssoLogin(username, password)
 
         expect(ssoCookie).not.toBeUndefined()
-        await expect(eduLogin(ssoCookie)).rejects.toThrowError(
-            '登录教务系统超时，请检查是否连接校园网'
-        )
+        const eduCookie = await eduLogin(ssoCookie)
+        expect(eduCookie).not.toBeUndefined()
+        expect(eduCookie).toHaveProperty('JSESSIONID')
     })
 })

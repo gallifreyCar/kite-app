@@ -1,5 +1,7 @@
 import * as CryptoJS from 'crypto-js'
 import * as cookie from 'cookie'
+import { isUndefined } from 'lodash'
+import axios from 'axios'
 
 const $_chars = 'ABCDEFGHJKMNPQRSTWXYZabcdefhijkmnprstwxyz2345678'
 const _chars_len = $_chars.length
@@ -46,4 +48,38 @@ export const stringifyCookie = (cookie: Cookie) => {
     return Object.keys(cookie)
         .map((key) => `${key}=${cookie[key]}`)
         .join('; ')
+}
+
+export const mergeCookie = (prevCookie: string, setCookieArray: string[] | undefined): Cookie => {
+    if (isUndefined(setCookieArray) || setCookieArray.length === 0) {
+        return parseCookie(prevCookie)
+    }
+    const setCookie: Cookie = setCookieArray
+        .map((cookie) => parseCookie(filterCookie(cookie)))
+        .reduce((prev, curr) => ({ ...prev, ...curr }), {})
+    const nextCookie: Cookie = {
+        ...parseCookie(prevCookie),
+        ...setCookie,
+    }
+    return nextCookie
+}
+
+export const axiosGetResolveRedirect = (url: string, cookie: Cookie) => {
+    return axios.get(url, {
+        headers: {
+            cookie: stringifyCookie(cookie),
+        },
+        timeout: 1000,
+        withCredentials: true,
+        maxRedirects: 0,
+        validateStatus: (status) => status >= 200 && status <= 302,
+    })
+}
+
+export const isRedirectStatus = (status: number) => {
+    return status >= 300 && status <= 303
+}
+
+export const isUndefinedOrNull = (value: any) => {
+    return isUndefined(value) || value === null
 }

@@ -24,12 +24,12 @@ let worker: TesseractWorker
  * @param username
  * @param password
  */
-export const getSSOCookie = async (username: string, password: string): Promise<Cookie> => {
+export const ssoLogin = async (username: string, password: string): Promise<Cookie> => {
     let retryCount = 0
     let lastErrorMessage = ''
     while (retryCount < MAX_CAPTCHA_COUNT) {
         try {
-            const cookie = await ssoLogin(username, password)
+            const cookie = await getSSOCookie(username, password)
             return cookie
         } catch (e: any) {
             console.warn(`第${retryCount + 1}次尝试: ${e.message}，重试中...`)
@@ -46,7 +46,7 @@ export const getSSOCookie = async (username: string, password: string): Promise<
  * @param username
  * @param password
  */
-export const ssoLogin = async (username: string, password: string): Promise<Cookie> => {
+export const getSSOCookie = async (username: string, password: string): Promise<Cookie> => {
     try {
         const res = await axios.get(SSO_LOGIN_URL)
         const originCookie = res.headers['set-cookie']![0]
