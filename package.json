@@ -44,6 +44,7 @@
         "@types/qs": "^6.9.7",
         "@types/react": "~17.0.21",
         "@types/react-native": "~0.64.12",
+        "babel-plugin-module-resolver": "^4.1.0",
         "jest": "^26.3.1",
         "jest-expo": "~43.0.0",
         "prettier": "2.4.1",
