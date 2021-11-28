@@ -17,6 +17,7 @@
         "@react-navigation/native": "^6.0.2",
         "@react-navigation/native-stack": "^6.1.0",
         "axios": "^0.24.0",
+        "cheerio": "^1.0.0-rc.10",
         "cookie": "^0.4.1",
         "crypto-js": "^4.1.1",
         "expo": "~43.0.2",
