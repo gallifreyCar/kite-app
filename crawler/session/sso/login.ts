@@ -1,17 +1,18 @@
 import axios from 'axios'
 import * as Buffer from 'buffer'
 import * as qs from 'qs'
-import Tesseract from 'tesseract.js'
+import { createWorker } from 'Tesseract.js'
 import { encryptAES, filterCookie, parseCookie } from './utils'
 import { CAPTCHA_URL, DDDDOCR_URL, HEADERS, LOGIN_URL, NEED_CAPTCHA_URL } from './constant'
-import { LoginCredential, TesseractWorker } from './type'
+import { Worker } from 'tesseract.js'
 
-const { createWorker } = Tesseract
+type TesseractWorker = Worker | undefined
 
 let worker: TesseractWorker
 
 /**
  * 尝试登录获取Cookie
+ * @warning 使用tesseract进行验证码识别，必须调用initWorker()方法初始化
  * @param username
  * @param password
  */
