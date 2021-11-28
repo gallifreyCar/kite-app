@@ -1,7 +1,7 @@
 import axios from 'axios'
 import * as Buffer from 'buffer'
 import * as qs from 'qs'
-import { createWorker } from 'Tesseract.js'
+import { createWorker } from 'tesseract.js'
 import { encryptAES, filterCookie, parseCookie } from '../utils'
 import {
     CAPTCHA_URL,
