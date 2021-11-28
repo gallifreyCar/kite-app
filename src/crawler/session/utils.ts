@@ -76,6 +76,16 @@ export const axiosGetResolveRedirect = (url: string, cookie: Cookie) => {
     })
 }
 
+export const axiosPostResolveRedirect = (url: string, data: any, headers: any) => {
+    return axios.post(url, data, {
+        headers: headers,
+        timeout: 1000,
+        withCredentials: true,
+        maxRedirects: 0,
+        validateStatus: (status) => status >= 200 && status <= 302,
+    })
+}
+
 export const isRedirectStatus = (status: number) => {
     return status >= 300 && status <= 303
 }

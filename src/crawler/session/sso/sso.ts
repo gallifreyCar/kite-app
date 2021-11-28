@@ -1,18 +1,24 @@
 import axios from 'axios'
 import * as Buffer from 'buffer'
 import * as qs from 'qs'
-import { createWorker } from 'tesseract.js'
-import { encryptAES, filterCookie, parseCookie } from '../utils'
+import { createWorker, Worker } from 'tesseract.js'
+import {
+    axiosPostResolveRedirect,
+    encryptAES,
+    filterCookie,
+    isRedirectStatus,
+    mergeCookie,
+    parseCookie,
+} from '../utils'
 import {
     CAPTCHA_URL,
     DDDDOCR_URL,
     HEADERS,
-    SSO_LOGIN_URL,
-    NEED_CAPTCHA_URL,
-    TESS_ENG_DATA_PATH,
     MAX_CAPTCHA_COUNT,
+    NEED_CAPTCHA_URL,
+    SSO_LOGIN_URL,
+    TESS_ENG_DATA_PATH,
 } from '@/constants'
-import { Worker } from 'tesseract.js'
 
 type TesseractWorker = Worker | undefined
 
@@ -158,35 +164,29 @@ const loginWithAuth = async (
     }
     let res
     try {
-        res = await axios.post(SSO_LOGIN_URL, qs.stringify(params), {
-            headers: {
-                ...HEADERS,
-                'content-type': 'application/x-www-form-urlencoded',
-                cookie,
-            },
-            maxRedirects: 0,
+        res = await axiosPostResolveRedirect(SSO_LOGIN_URL, qs.stringify(params), {
+            ...HEADERS,
+            'content-type': 'application/x-www-form-urlencoded',
+            cookie,
         })
     } catch (e: any) {
-        const status = e.response.status
-        if (status === 301 || status === 302) {
-            const httpCookie = e.response.headers['set-cookie']![0]
-            if (httpCookie) {
-                return parseCookie(filterCookie(httpCookie))
-            }
-            throw new Error('登录SSO状态码302，但未获取到Cookie')
-        }
         throw new Error('登录SSO状态码非302遇到错误: ' + e.message)
     }
-    if (res.status === 200) {
-        const html = res.data
-        if (html.includes('无效的验证码')) {
-            throw new Error('登录SSO状态码200，验证码错误')
-        } else if (html.includes('您提供的用户名或者密码有误')) {
-            throw new Error('登录SSO状态码200，用户名或密码错误')
+    const status = res.status
+    if (isRedirectStatus(status)) {
+        if (res.headers['set-cookie']) {
+            return mergeCookie('', res.headers['set-cookie'])
         }
-        throw new Error('登录SSO状态码200，未知错误')
+        throw new Error('登录SSO状态码302，但未获取到Cookie')
     }
-    throw new Error('登录SSO失败, 未知错误')
+
+    const resHtml = res.data
+    if (resHtml.includes('无效的验证码')) {
+        throw new Error('登录SSO状态码200，验证码错误')
+    } else if (resHtml.includes('您提供的用户名或者密码有误')) {
+        throw new Error('登录SSO状态码200，用户名或密码错误')
+    }
+    throw new Error('登录SSO状态码200，未知错误')
 }
 
 /**
