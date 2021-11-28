@@ -3,7 +3,7 @@ import * as Buffer from 'buffer'
 import * as qs from 'qs'
 import { createWorker } from 'Tesseract.js'
 import { encryptAES, filterCookie, parseCookie } from './utils'
-import { CAPTCHA_URL, DDDDOCR_URL, HEADERS, LOGIN_URL, NEED_CAPTCHA_URL } from './constant'
+import { CAPTCHA_URL, DDDDOCR_URL, HEADERS, LOGIN_URL, NEED_CAPTCHA_URL } from '../../../constants'
 import { Worker } from 'tesseract.js'
 
 type TesseractWorker = Worker | undefined
