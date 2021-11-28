@@ -26,16 +26,18 @@ let worker: TesseractWorker
  */
 export const getSSOCookie = async (username: string, password: string): Promise<Cookie> => {
     let retryCount = 0
+    let lastErrorMessage = ''
     while (retryCount < MAX_CAPTCHA_COUNT) {
         try {
             const cookie = await ssoLogin(username, password)
             return cookie
         } catch (e: any) {
             console.warn(`第${retryCount + 1}次尝试: ${e.message}，重试中...`)
+            lastErrorMessage = e.message
             retryCount++
         }
     }
-    throw new Error('登录SSO获取Cookie超出最大十次限制')
+    throw new Error('登录失败超出最大次数限制：' + lastErrorMessage)
 }
 
 /**
@@ -244,7 +246,7 @@ const isCaptchaFormatCorrect = (captcha: string): boolean => {
 /**
  * Worker初始化
  */
-export const initWorker = async (): Promise<any> => {
+export const initTesseractWorker = async (): Promise<any> => {
     if (worker) {
         return
     }
@@ -265,7 +267,7 @@ export const initWorker = async (): Promise<any> => {
  * Worker清理
  * @param cookie
  */
-export const terminateWorker = async () => {
+export const terminateTesseractWorker = async () => {
     if (worker) {
         await worker.terminate()
         worker = undefined
