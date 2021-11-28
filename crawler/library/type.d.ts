@@ -98,5 +98,5 @@ interface SearchLibraryResult {
     // 总页数
     totalPages: number,
     // 当前页面图书列表
-    bookList: [Book],
+    bookList: Book[],
 }
