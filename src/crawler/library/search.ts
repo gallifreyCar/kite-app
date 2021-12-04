@@ -1,8 +1,8 @@
 import axios from 'axios'
 import $ from 'cheerio'
 
-import { SEARCH_URL } from '@/crawler/library/constant'
 import { parseInt } from 'lodash'
+import { SEARCH_URL } from '@/constants/crawler/library'
 
 export enum SearchWay {
     // 按任意词查询
