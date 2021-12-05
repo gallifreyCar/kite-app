@@ -40,6 +40,9 @@ web-build/
 .idea
 *.iml
 
+# vscode
+.vscode
+
 # jest
 coverage/
 
