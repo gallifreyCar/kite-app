@@ -10,3 +10,5 @@ export const HOME_URL = 'http://210.35.66.106'
 export const OPAC_URL = HOME_URL + '/opac'
 export const SEARCH_URL = OPAC_URL + '/search'
 export const BOOK_URL = OPAC_URL + '/book'
+
+export const BOOK_IMAGE_INFO_URL = 'https://book-resource.dataesb.com/websearch/metares'

@@ -42,3 +42,13 @@ interface SearchLibraryResult {
     // 当前页面图书列表
     bookList: Book[]
 }
+
+interface BookImageInfo {
+    // ISBN号
+    isbn: string
+    // 图片的原始来源
+    coverlink: string
+    // dataesb缓存的来源
+    resourceLink: string
+    status: number
+}

@@ -4,10 +4,10 @@
 
 ## 环境
 
--   node v14.x+
--   yarn v2
--   其余包依赖由 [Yarn](https://yarnpkg.com/) 管理；
--   Neact Native 环境由 [Expo](https://expo.dev/) 代理。
+- node v14.x+
+- yarn v2
+- 其余包依赖由 [Yarn](https://yarnpkg.com/) 管理
+- React Native 环境
 
 ## 运行
 
@@ -20,13 +20,8 @@
     yarn start
     yarn android
     yarn ios
-    yarn web
     ```
 
 ## 注意事项
 
-先删除原来 master 分支的代码，再拉取最新代码。
-
 由于配置了 Prettier，请务必在 IDE 安装相关插件确保代码格式正确。
-
-目前依赖于 expo 进行开发环境的构建，如果需要构建 Native 应用，请转而使用`react-native-cli`。

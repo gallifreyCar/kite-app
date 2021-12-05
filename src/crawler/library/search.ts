@@ -2,7 +2,7 @@ import axios from 'axios'
 import $ from 'cheerio'
 
 import { parseInt } from 'lodash'
-import { SEARCH_URL } from '@/constants/crawler/library'
+import { BOOK_IMAGE_INFO_URL, SEARCH_URL } from '@/constants/crawler/library'
 
 export enum SearchWay {
     // 按任意词查询
@@ -67,6 +67,28 @@ export enum SortOrder {
  */
 const parseIntWithComma = (src: string): number =>
     parseInt(/(\d+,?)+/.exec(src)![0].split(',').join(''))
+
+/**
+ * 根据ISBN数组获得所有的图书图片信息
+ * @param isbns ISBN数组
+ */
+export const getBooksImage = async (isbns: string[]): Promise<BookImageInfo[]> => {
+    const queryParams = {
+        glc: 'U1SH021060',
+        cmdACT: 'getImages',
+        type: '0',
+        isbns: isbns.join(','),
+    }
+
+    const response = await axios.get(BOOK_IMAGE_INFO_URL, {
+        params: queryParams,
+    })
+
+    let responseJsonStr = response.data.trim()
+    responseJsonStr = responseJsonStr.substring(1, responseJsonStr.length - 1)
+
+    return JSON.parse(responseJsonStr)['result']
+}
 
 export const search = async (request: SearchLibraryRequest): Promise<SearchLibraryResult> => {
     const queryParams = {

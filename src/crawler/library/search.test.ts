@@ -10,6 +10,7 @@ describe('search test', () => {
             sortOrder: SortOrder.Asc,
             sortWay: SortWay.Title,
         })
-        console.log(result)
+        expect(result.currentPage).toBe(1)
+        expect(result.bookList.length).toBeLessThanOrEqual(10)
     }, 10000)
 })
