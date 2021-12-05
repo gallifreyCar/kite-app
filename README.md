@@ -1,6 +1,6 @@
 # kite-app
 
-上应小风筝 APP, 基于 React Native.
+上应小风筝 APP，基于 React Native。
 
 ## 环境
 
@@ -16,11 +16,13 @@
 2. `cd` 到本项目目录下；
 3. 安装依赖：`yarn install`
 4. 启动：（任选一种，其中 `yarn start` 为从下列命令中选择一种运行）
-    ```shell
-    yarn start
-    yarn android
-    yarn ios
-    ```
+   ``` shell
+   yarn start
+   yarn android
+   yarn ios
+   ```
+
+依赖有更新时，可执行 `yarn cache clean` 清除缓存。
 
 ## 注意事项
 

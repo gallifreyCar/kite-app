@@ -1,17 +1,11 @@
 {
-    "compilerOptions": {
-        "strict": true,
-        "baseUrl": ".",
-        "paths": {
-            "@/*": [
-                "src/*"
-            ]
-        },
-      "jsx": "react"
-    },
-
-    "include": [
-        "**/*.ts", "**/*.tsx", "**/*.d.ts"
-    ],
-    "exclude": ["node_modules", "babel.config.js"]
+	"compilerOptions": {
+		"strict": true,
+		"checkJs": false,
+		"baseUrl": ".",
+		"paths": { "@/*": [ "src/*" ] },
+		"jsx": "react"
+	},
+	"include": [ "**/*.ts", "**/*.tsx", "**/*.d.ts" ],
+	"exclude": [ "node_modules", "babel.config.js" ]
 }
