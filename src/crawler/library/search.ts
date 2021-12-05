@@ -95,18 +95,18 @@ export const search = async (request: SearchLibraryRequest): Promise<SearchLibra
         .map((index, element): Book => {
             const bookCoverImage = $('.bookcover_img', element)
             const getBookInfo = (selector: string) => $(selector, element).html()?.trim()!
-            return {
-                author: getBookInfo('.author-link'),
-                bookId: bookCoverImage.attr('bookrecno')!,
-                isbn: bookCoverImage.attr('isbn')!,
 
-                callNo: getBookInfo('.callnosSpan'),
-                publishDate: getBookInfo(
-                    'td:nth-child(4) > div:nth-child(1) > div:nth-child(3)'
-                ).split('出版日期:')[1],
-                publisher: getBookInfo('.publisher-link'),
-                title: getBookInfo('.title-link'),
-            }
+            const author = getBookInfo('.author-link')
+            const bookId = bookCoverImage.attr('bookrecno')!
+            const isbn = bookCoverImage.attr('isbn')!
+            const callNo = getBookInfo('.callnosSpan')
+            const publishDate = getBookInfo(
+                'td:nth-child(4) > div:nth-child(1) > div:nth-child(3)'
+            ).split('出版日期:')[1]
+            const publisher = getBookInfo('.publisher-link')
+            const title = getBookInfo('.title-link')
+
+            return { author, bookId, isbn, callNo, publishDate, publisher, title }
         })
         .get()
 
@@ -116,14 +116,13 @@ export const search = async (request: SearchLibraryRequest): Promise<SearchLibra
         $('div.meneame:nth-child(4) > span:nth-child(1)', document).text()
     )
     const resultCount = parseIntWithComma(resultNumAndTime)
-
     const useTime = parseFloat(/检索时间: (\d+(?:\.\d+)?)/.exec(resultNumAndTime)![1])
 
     return {
-        bookList,
-        currentPage,
-        totalPages,
         resultCount,
         useTime,
+        currentPage,
+        totalPages,
+        bookList,
     }
 }
