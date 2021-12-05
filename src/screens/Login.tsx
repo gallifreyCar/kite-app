@@ -3,16 +3,19 @@ import { GestureResponderEvent, StyleSheet, View } from 'react-native'
 import * as React from 'react'
 import { useState } from 'react'
 import { Button, Input, ThemeProvider } from 'react-native-elements'
+import { LoginAndGetCookie } from '@/crawler/session/cookie'
 
 export const Login = () => {
     const [state, setState] = useState({
         username: '',
         password: '',
     })
-    const login = (e: GestureResponderEvent) => {
+    const login = async (e: GestureResponderEvent) => {
         e.preventDefault()
         console.log('ready for login: ' + state.username + state.password)
         const { username, password } = state
+        const cookie = await LoginAndGetCookie(username, password)
+        // save to storage
     }
     return (
         <ThemeProvider>
