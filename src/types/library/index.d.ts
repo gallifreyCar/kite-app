@@ -52,3 +52,5 @@ interface BookImageInfo {
     resourceLink: string
     status: number
 }
+
+type BookImageSearchResult = { [key: string]: BookImageInfo }
