@@ -26,4 +26,7 @@
 
 ## 注意事项
 
-由于配置了 Prettier，请务必在 IDE 安装相关插件确保代码格式正确。
++ 由于配置了 Prettier，请务必在 IDE 安装相关插件确保代码格式正确。
+
++ 请务必遵守commit规范，commit规范见文件 [conventionalcommit.json](conventionalcommit.json)。
+若使用jetbrains系ide，可安装插件Conventional Commit插件，将自动加载该commit模板文件。
