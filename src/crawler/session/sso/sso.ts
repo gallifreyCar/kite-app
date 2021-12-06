@@ -1,7 +1,6 @@
 import axios from 'axios'
 import * as Buffer from 'buffer'
 import * as qs from 'qs'
-import { createWorker, Worker } from 'tesseract.js'
 import {
     axiosPostResolveRedirect,
     encryptAES,
@@ -17,12 +16,7 @@ import {
     MAX_CAPTCHA_COUNT,
     NEED_CAPTCHA_URL,
     SSO_LOGIN_URL,
-    TESS_ENG_DATA_PATH,
 } from '@/constants'
-
-type TesseractWorker = Worker | undefined
-
-let worker: TesseractWorker
 
 /**
  * 带有最大重试次数的登录SSO
@@ -62,8 +56,7 @@ export const getSSOCookie = async (username: string, password: string): Promise<
         const needCaptcha = await needCaptchaCheck(indexCookie, username)
         if (needCaptcha) {
             const captchaImage = await getCaptchaImageBase64(CAPTCHA_URL, indexCookie)
-            // captcha = await recognizeCaptcha(captchaImage)
-            captcha = await recognizeCaptchaWithTesseract(captchaImage)
+            captcha = await recognizeCaptcha(captchaImage)
             if (!isCaptchaFormatCorrect(captcha)) throw new Error('识别验证码格式不正确')
         }
         const pwdSalt = getPwdSalt(loginHtml)
@@ -221,55 +214,7 @@ const needCaptchaCheck = async (cookie: string, account: string): Promise<boolea
     }
 }
 
-/**
- * Tesseract识别验证码
- * @param imgBase64
- */
-const recognizeCaptchaWithTesseract = async (imgBase64: string): Promise<string> => {
-    const prefix = 'data:image/png;base64,'
-    try {
-        if (!worker) throw new Error('tesseract worker 未初始化')
-        const {
-            data: { text },
-        } = await worker!.recognize(prefix + imgBase64)
-        return text.replace(/[\n|\s+]/g, '')
-    } catch (e: any) {
-        throw new Error('识别验证码失败: ' + e.message)
-    }
-}
-
 const isCaptchaFormatCorrect = (captcha: string): boolean => {
     const captchaRegex = /^[0-9a-zA-Z]{4}$/
     return captcha.length === 4 && captchaRegex.test(captcha)
-}
-
-/**
- * Worker初始化
- */
-export const initTesseractWorker = async (): Promise<any> => {
-    if (worker) {
-        return
-    }
-    try {
-        worker = createWorker({
-            langPath: TESS_ENG_DATA_PATH,
-            gzip: false,
-        })
-        await worker.load()
-        await worker.loadLanguage('eng')
-        await worker.initialize('eng')
-    } catch (e: any) {
-        throw new Error('初始化Worker失败: ' + e)
-    }
-}
-
-/**
- * Worker清理
- * @param cookie
- */
-export const terminateTesseractWorker = async () => {
-    if (worker) {
-        await worker.terminate()
-        worker = undefined
-    }
 }
