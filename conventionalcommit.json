@@ -1,0 +1,25 @@
+{
+	"types": {
+		"Add": {
+			"description": "添加新功能，新特性"
+		},
+		"Refactor": {
+			"description": "未对功能产生任何影响的情况下修改代码，即重构代码"
+		},
+		"Fix": {
+			"description": "修复Bug"
+		},
+		"Update": {
+			"description": "更新代码"
+		},
+		"Delete": {
+			"description": "删除文件"
+		},
+		"Lint": {
+			"description": "格式化代码"
+		},
+		"CustomType": {
+			"description": "有需要可以继续新增commit类型"
+		}
+	}
+}
