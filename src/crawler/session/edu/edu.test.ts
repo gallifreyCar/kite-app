@@ -1,10 +1,7 @@
-import { eduLogin, ssoLogin, initTesseractWorker } from '@/crawler/session'
+import { eduLogin, ssoLogin } from '@/crawler/session'
 
 describe('Edu Login Test', () => {
     jest.setTimeout(10000)
-    beforeAll(async () => {
-        await initTesseractWorker()
-    })
     it('should get edu cookie', async () => {
         const username = 'username'
         const password = 'password'
