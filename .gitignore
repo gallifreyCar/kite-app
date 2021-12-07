@@ -160,3 +160,7 @@ web_modules/
 .pnp.*
 
 .idea
+
+
+## cocopods
+ios/Pods/
