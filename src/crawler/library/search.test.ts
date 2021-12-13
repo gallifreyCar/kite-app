@@ -1,8 +1,8 @@
-import { search, SearchWay, SortOrder, SortWay } from '@/crawler/library/search'
+import { searchBook, SearchWay, SortOrder, SortWay } from '@/crawler/library/search'
 
 describe('search test', () => {
     it('should show search result', async () => {
-        const result = await search({
+        const result = await searchBook({
             keyword: 'Java',
             page: 1,
             rows: 10,
