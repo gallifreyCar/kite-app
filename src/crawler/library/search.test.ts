@@ -7,6 +7,9 @@ import {
 } from '@/crawler/library/search'
 
 describe('search test', () => {
+    beforeAll(() => {
+        jest.setTimeout(30000)
+    })
     it('should show search result', async () => {
         const result = await searchBook({
             keyword: 'Java',
@@ -18,7 +21,7 @@ describe('search test', () => {
         })
         expect(result.currentPage).toBe(1)
         expect(result.bookList.length).toBeLessThanOrEqual(10)
-    }, 10000)
+    })
     it('should get image urls', async () => {
         const bookResult = await searchBook({
             keyword: 'Java',
@@ -39,5 +42,5 @@ describe('search test', () => {
         for (const imageResultIsbn of imageResultIsbnArray) {
             expect(searchResultIsbnArray).toContain(imageResultIsbn)
         }
-    }, 10000)
+    })
 })
