@@ -91,14 +91,17 @@ const getStorage = async key => {
 // initPage();
 
 const App = () => {
+
   const [isRefered, setIsRefered] = useState(false);
   const [building, setBuilding] = useState(defaultInfo?.building ?? '');
-  const [room, setRoom] = useState(defaultInfo?.room ?? '');
+  const [room    , setRoom    ] = useState(defaultInfo?.room ?? '');
   const [isChart, setIsChart] = useState(false);
+
   const [textBlockData, setTextBlockData] = useState({});
   const [chartData, setChartData] = useState({});
-  const [rankData, setRankData] = useState({});
-  const [isShowRank, setIsShowRank] = useState(false);
+  const [ rankData,  setRankData] = useState({});
+
+  const [isShowRank,  setIsShowRank ] = useState(false);
   const [isHoursData, setIsHoursData] = useState(false);
   const [charge, setCharge] = useState(0);
 
@@ -115,9 +118,9 @@ const App = () => {
     if (
       buildingInt >= 1 &&
       buildingInt < 27 &&
+      roomInt > 100 &&
       roomInt / 100 >= 0 &&
-      roomInt / 100 < 17 &&
-      roomInt > 100
+      roomInt / 100 < 17
     ) {
       const result = `10${buildingInt}${roomInt}`;
       return result;
