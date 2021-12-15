@@ -7,13 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		00E356F31AD99517003FC87E /* kiteTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* kiteTests.m */; };
+		00E356F31AD99517003FC87E /* KiteTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* KiteTests.m */; };
 		13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
-		A22F703C7407DAF89D6F1410 /* libPods-kite.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D7068C62C58510DF980BB5B7 /* libPods-kite.a */; };
-		FFE9E0327F0BC8CED6BF9111 /* libPods-kite-kiteTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F9AA6A451986BEF66224805 /* libPods-kite-kiteTests.a */; };
+		A22F703C7407DAF89D6F1410 /* libPods-Kite.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D7068C62C58510DF980BB5B7 /* libPods-Kite.a */; };
+		FFE9E0327F0BC8CED6BF9111 /* libPods-Kite-KiteTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F9AA6A451986BEF66224805 /* libPods-Kite-KiteTests.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -22,27 +22,27 @@
 			containerPortal = 83CBB9F71A601CBA00E9B192 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 13B07F861A680F5B00A75B9A;
-			remoteInfo = kite;
+			remoteInfo = Kite;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		00E356EE1AD99517003FC87E /* kiteTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = kiteTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		00E356EE1AD99517003FC87E /* KiteTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KiteTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		00E356F21AD99517003FC87E /* kiteTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = kiteTests.m; sourceTree = "<group>"; };
-		0E03399C714397C9EC75C787 /* Pods-kite.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-kite.release.xcconfig"; path = "Target Support Files/Pods-kite/Pods-kite.release.xcconfig"; sourceTree = "<group>"; };
-		13B07F961A680F5B00A75B9A /* kite.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = kite.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = kite/AppDelegate.h; sourceTree = "<group>"; };
-		13B07FB01A68108700A75B9A /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = kite/AppDelegate.m; sourceTree = "<group>"; };
-		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = kite/Images.xcassets; sourceTree = "<group>"; };
-		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = kite/Info.plist; sourceTree = "<group>"; };
-		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = kite/main.m; sourceTree = "<group>"; };
-		28470BDC432F96EC46B50264 /* Pods-kite.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-kite.debug.xcconfig"; path = "Target Support Files/Pods-kite/Pods-kite.debug.xcconfig"; sourceTree = "<group>"; };
-		2F9AA6A451986BEF66224805 /* libPods-kite-kiteTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-kite-kiteTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = kite/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		A78893F4F5B558C12F6190AC /* Pods-kite-kiteTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-kite-kiteTests.debug.xcconfig"; path = "Target Support Files/Pods-kite-kiteTests/Pods-kite-kiteTests.debug.xcconfig"; sourceTree = "<group>"; };
-		D35C4836A0D2E14E8170013A /* Pods-kite-kiteTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-kite-kiteTests.release.xcconfig"; path = "Target Support Files/Pods-kite-kiteTests/Pods-kite-kiteTests.release.xcconfig"; sourceTree = "<group>"; };
-		D7068C62C58510DF980BB5B7 /* libPods-kite.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-kite.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		00E356F21AD99517003FC87E /* KiteTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KiteTests.m; sourceTree = "<group>"; };
+		0E03399C714397C9EC75C787 /* Pods-Kite.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kite.release.xcconfig"; path = "Target Support Files/Pods-Kite/Pods-Kite.release.xcconfig"; sourceTree = "<group>"; };
+		13B07F961A680F5B00A75B9A /* Kite.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Kite.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = Kite.appDelegate.h; sourceTree = "<group>"; };
+		13B07FB01A68108700A75B9A /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = Kite.appDelegate.m; sourceTree = "<group>"; };
+		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = Kite/Images.xcassets; sourceTree = "<group>"; };
+		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Kite/Info.plist; sourceTree = "<group>"; };
+		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = Kite/main.m; sourceTree = "<group>"; };
+		28470BDC432F96EC46B50264 /* Pods-Kite.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kite.debug.xcconfig"; path = "Target Support Files/Pods-Kite/Pods-Kite.debug.xcconfig"; sourceTree = "<group>"; };
+		2F9AA6A451986BEF66224805 /* libPods-Kite-KiteTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Kite-KiteTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = Kite/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		A78893F4F5B558C12F6190AC /* Pods-Kite-KiteTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kite-KiteTests.debug.xcconfig"; path = "Target Support Files/Pods-Kite-KiteTests/Pods-Kite-KiteTests.debug.xcconfig"; sourceTree = "<group>"; };
+		D35C4836A0D2E14E8170013A /* Pods-Kite-KiteTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kite-KiteTests.release.xcconfig"; path = "Target Support Files/Pods-Kite-KiteTests/Pods-Kite-KiteTests.release.xcconfig"; sourceTree = "<group>"; };
+		D7068C62C58510DF980BB5B7 /* libPods-Kite.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Kite.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -51,7 +51,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FFE9E0327F0BC8CED6BF9111 /* libPods-kite-kiteTests.a in Frameworks */,
+				FFE9E0327F0BC8CED6BF9111 /* libPods-Kite-KiteTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -59,20 +59,20 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A22F703C7407DAF89D6F1410 /* libPods-kite.a in Frameworks */,
+				A22F703C7407DAF89D6F1410 /* libPods-Kite.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		00E356EF1AD99517003FC87E /* kiteTests */ = {
+		00E356EF1AD99517003FC87E /* KiteTests */ = {
 			isa = PBXGroup;
 			children = (
-				00E356F21AD99517003FC87E /* kiteTests.m */,
+				00E356F21AD99517003FC87E /* KiteTests.m */,
 				00E356F01AD99517003FC87E /* Supporting Files */,
 			);
-			path = kiteTests;
+			path = KiteTests;
 			sourceTree = "<group>";
 		};
 		00E356F01AD99517003FC87E /* Supporting Files */ = {
@@ -83,7 +83,7 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		13B07FAE1A68108700A75B9A /* kite */ = {
+		13B07FAE1A68108700A75B9A /* Kite */ = {
 			isa = PBXGroup;
 			children = (
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
@@ -93,15 +93,15 @@
 				81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */,
 				13B07FB71A68108700A75B9A /* main.m */,
 			);
-			name = kite;
+			name = Kite;
 			sourceTree = "<group>";
 		};
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
-				D7068C62C58510DF980BB5B7 /* libPods-kite.a */,
-				2F9AA6A451986BEF66224805 /* libPods-kite-kiteTests.a */,
+				D7068C62C58510DF980BB5B7 /* libPods-Kite.a */,
+				2F9AA6A451986BEF66224805 /* libPods-Kite-KiteTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -116,9 +116,9 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
-				13B07FAE1A68108700A75B9A /* kite */,
+				13B07FAE1A68108700A75B9A /* Kite */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
-				00E356EF1AD99517003FC87E /* kiteTests */,
+				00E356EF1AD99517003FC87E /* KiteTests */,
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				B09E55C4927973B6C2F41F6B /* Pods */,
@@ -131,8 +131,8 @@
 		83CBBA001A601CBA00E9B192 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				13B07F961A680F5B00A75B9A /* kite.app */,
-				00E356EE1AD99517003FC87E /* kiteTests.xctest */,
+				13B07F961A680F5B00A75B9A /* Kite.app */,
+				00E356EE1AD99517003FC87E /* KiteTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -140,10 +140,10 @@
 		B09E55C4927973B6C2F41F6B /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				28470BDC432F96EC46B50264 /* Pods-kite.debug.xcconfig */,
-				0E03399C714397C9EC75C787 /* Pods-kite.release.xcconfig */,
-				A78893F4F5B558C12F6190AC /* Pods-kite-kiteTests.debug.xcconfig */,
-				D35C4836A0D2E14E8170013A /* Pods-kite-kiteTests.release.xcconfig */,
+				28470BDC432F96EC46B50264 /* Pods-Kite.debug.xcconfig */,
+				0E03399C714397C9EC75C787 /* Pods-Kite.release.xcconfig */,
+				A78893F4F5B558C12F6190AC /* Pods-Kite-KiteTests.debug.xcconfig */,
+				D35C4836A0D2E14E8170013A /* Pods-Kite-KiteTests.release.xcconfig */,
 			);
 			name = Pods;
 			path = Pods;
@@ -152,9 +152,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		00E356ED1AD99517003FC87E /* kiteTests */ = {
+		00E356ED1AD99517003FC87E /* KiteTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "kiteTests" */;
+			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "KiteTests" */;
 			buildPhases = (
 				6D61E04A22A09DE53A26F1F7 /* [CP] Check Pods Manifest.lock */,
 				00E356EA1AD99517003FC87E /* Sources */,
@@ -168,14 +168,14 @@
 			dependencies = (
 				00E356F51AD99517003FC87E /* PBXTargetDependency */,
 			);
-			name = kiteTests;
-			productName = kiteTests;
-			productReference = 00E356EE1AD99517003FC87E /* kiteTests.xctest */;
+			name = KiteTests;
+			productName = KiteTests;
+			productReference = 00E356EE1AD99517003FC87E /* KiteTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		13B07F861A680F5B00A75B9A /* kite */ = {
+		13B07F861A680F5B00A75B9A /* Kite */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "kite" */;
+			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "Kite" */;
 			buildPhases = (
 				6CDE39E51A7BB348D9B6713E /* [CP] Check Pods Manifest.lock */,
 				FD10A7F022414F080027D42C /* Start Packager */,
@@ -190,9 +190,9 @@
 			);
 			dependencies = (
 			);
-			name = kite;
-			productName = kite;
-			productReference = 13B07F961A680F5B00A75B9A /* kite.app */;
+			name = Kite;
+			productName = Kite;
+			productReference = 13B07F961A680F5B00A75B9A /* Kite.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -212,7 +212,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "kite" */;
+			buildConfigurationList = 83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "Kite" */;
 			compatibilityVersion = "Xcode 12.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -225,8 +225,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				13B07F861A680F5B00A75B9A /* kite */,
-				00E356ED1AD99517003FC87E /* kiteTests */,
+				13B07F861A680F5B00A75B9A /* Kite */,
+				00E356ED1AD99517003FC87E /* KiteTests */,
 			);
 		};
 /* End PBXProject section */
@@ -271,15 +271,15 @@
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-kite-kiteTests/Pods-kite-kiteTests-resources-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-Kite-KiteTests/Pods-Kite-KiteTests-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-kite-kiteTests/Pods-kite-kiteTests-resources-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-Kite-KiteTests/Pods-Kite-KiteTests-resources-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-kite-kiteTests/Pods-kite-kiteTests-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Kite-KiteTests/Pods-Kite-KiteTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		58F29DE521B2B064AC7E2898 /* [CP] Embed Pods Frameworks */ = {
@@ -288,15 +288,15 @@
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-kite/Pods-kite-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-Kite/Pods-Kite-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-kite/Pods-kite-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-Kite/Pods-Kite-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-kite/Pods-kite-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Kite/Pods-Kite-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		6CDE39E51A7BB348D9B6713E /* [CP] Check Pods Manifest.lock */ = {
@@ -314,7 +314,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-kite-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-Kite-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -336,7 +336,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-kite-kiteTests-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-Kite-KiteTests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -349,15 +349,15 @@
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-kite-kiteTests/Pods-kite-kiteTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-Kite-KiteTests/Pods-Kite-KiteTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-kite-kiteTests/Pods-kite-kiteTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-Kite-KiteTests/Pods-Kite-KiteTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-kite-kiteTests/Pods-kite-kiteTests-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Kite-KiteTests/Pods-Kite-KiteTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		9B9211ADEF34550B7E9A31C6 /* [CP] Copy Pods Resources */ = {
@@ -366,15 +366,15 @@
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-kite/Pods-kite-resources-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-Kite/Pods-Kite-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-kite/Pods-kite-resources-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-Kite/Pods-Kite-resources-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-kite/Pods-kite-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Kite/Pods-Kite-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		FD10A7F022414F080027D42C /* Start Packager */ = {
@@ -403,7 +403,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				00E356F31AD99517003FC87E /* kiteTests.m in Sources */,
+				00E356F31AD99517003FC87E /* KiteTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -421,7 +421,7 @@
 /* Begin PBXTargetDependency section */
 		00E356F51AD99517003FC87E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 13B07F861A680F5B00A75B9A /* kite */;
+			target = 13B07F861A680F5B00A75B9A /* Kite */;
 			targetProxy = 00E356F41AD99517003FC87E /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -429,14 +429,14 @@
 /* Begin XCBuildConfiguration section */
 		00E356F61AD99517003FC87E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A78893F4F5B558C12F6190AC /* Pods-kite-kiteTests.debug.xcconfig */;
+			baseConfigurationReference = A78893F4F5B558C12F6190AC /* Pods-Kite-KiteTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = kiteTests/Info.plist;
+				INFOPLIST_FILE = KiteTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -450,17 +450,17 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/kite.app/kite";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Kite.app/Kite";
 			};
 			name = Debug;
 		};
 		00E356F71AD99517003FC87E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D35C4836A0D2E14E8170013A /* Pods-kite-kiteTests.release.xcconfig */;
+			baseConfigurationReference = D35C4836A0D2E14E8170013A /* Pods-Kite-KiteTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
-				INFOPLIST_FILE = kiteTests/Info.plist;
+				INFOPLIST_FILE = KiteTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -474,19 +474,19 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/kite.app/kite";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Kite.app/Kite";
 			};
 			name = Release;
 		};
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 28470BDC432F96EC46B50264 /* Pods-kite.debug.xcconfig */;
+			baseConfigurationReference = 28470BDC432F96EC46B50264 /* Pods-Kite.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				ENABLE_BITCODE = NO;
-				INFOPLIST_FILE = kite/Info.plist;
+				INFOPLIST_FILE = Kite/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -497,7 +497,7 @@
 					"-lc++",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = kite;
+				PRODUCT_NAME = Kite;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -506,12 +506,12 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0E03399C714397C9EC75C787 /* Pods-kite.release.xcconfig */;
+			baseConfigurationReference = 0E03399C714397C9EC75C787 /* Pods-Kite.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
-				INFOPLIST_FILE = kite/Info.plist;
+				INFOPLIST_FILE = Kite/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -522,7 +522,7 @@
 					"-lc++",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = kite;
+				PRODUCT_NAME = Kite;
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
@@ -656,7 +656,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "kiteTests" */ = {
+		00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "KiteTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				00E356F61AD99517003FC87E /* Debug */,
@@ -665,7 +665,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "kite" */ = {
+		13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "Kite" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				13B07F941A680F5B00A75B9A /* Debug */,
@@ -674,7 +674,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "kite" */ = {
+		83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "Kite" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				83CBBA201A601CBA00E9B192 /* Debug */,
