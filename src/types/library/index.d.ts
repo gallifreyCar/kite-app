@@ -54,3 +54,13 @@ interface BookImageInfo {
 }
 
 type BookImageSearchResult = { [key: string]: BookImageInfo }
+
+interface HotSearchItem {
+    hotSearchWord: string
+    count: number
+}
+
+interface HotSearchResult {
+    recentMonth: HotSearchItem[]
+    totalTime: HotSearchItem[]
+}

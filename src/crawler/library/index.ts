@@ -6,3 +6,5 @@ export {
     SortOrder,
     SearchWay,
 } from './search'
+
+export { getHotSearch } from './hot_search'
