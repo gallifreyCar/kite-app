@@ -9,7 +9,6 @@ export const getHotSearch = async (): Promise<HotSearchResult> => {
 
     const getWords = (selector: string): HotSearchItem[] => {
         const parseHotSearchItem = (itemText: string): HotSearchItem => {
-            console.log(itemText)
             const [hotSearchWord, countText] = itemText.split('(').map((x) => x.trim())
             return {
                 count: parseInt(countText.slice(0, -1)),
@@ -22,7 +21,7 @@ export const getHotSearch = async (): Promise<HotSearchResult> => {
             .get()
     }
     return {
-        recentMonth: getWords('#page_content > div:nth-child(4) > fieldset:nth-child(1)'),
-        totalTime: getWords('#page_content > div:nth-child(4) > fieldset:nth-child(2)'),
+        recentMonth: getWords('fieldset:nth-child(1)'),
+        totalTime: getWords('fieldset:nth-child(2)'),
     }
 }
