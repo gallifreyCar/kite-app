@@ -62,7 +62,11 @@ export enum SortOrder {
 }
 
 /**
- * 找到src字符串中第一个逗号分割的整数，并解析成number
+ * 找到src字符串中第一个逗号结尾的整数，并解析成number
+ * 例如：
+ * '123,abc' 将返回数字123
+ * '12,34' 将返回数字12
+ *
  * @param src
  */
 const parseIntWithComma = (src: string): number =>
