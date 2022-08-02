@@ -82,6 +82,12 @@ jobs:
             .flutter-plugins-dependencies
             pubspec.lock
           key: pub-${{ github.ref }}-${{ github.sha }}
+          
+            # 安装指定Jdk版本
+      - name: 📌 Setup java
+        uses: actions/setup-java@v2
+        with:
+          java-version: '16'
 
       - name: 📌 Restore Workspace
         uses: actions/cache@v2
